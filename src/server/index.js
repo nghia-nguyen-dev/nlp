@@ -2,12 +2,15 @@ var path = require("path");
 const express = require("express");
 const bodyParser = require(`body-parser`);
 const callAPI = require("./mockAPI.js");
+const cors = require('cors')
 
 // Environment variable setup
 const dotenv = require("dotenv").config();
 const API_KEY = process.env.API_KEY;
 
 const app = express();
+
+app.use(cors());
 
 //Here we are configuring express to use body-parser as middle-ware.
 app.use(bodyParser.urlencoded({ extended: false }));
