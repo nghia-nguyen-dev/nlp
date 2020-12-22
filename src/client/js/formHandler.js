@@ -4,10 +4,9 @@ import { validateInput } from "./validate_input";
 function handleSubmit(event) {
 	event.preventDefault();
 
-	// user input must be placed inside object literal when passing into JSON.stringify or will error out!!!
 	const mood = document.getElementById("name").value;
 
-	// Validation
+	// Validate input to not accept numbers
 	if (!validateInput(mood)) {
 		alert(`Input cannot accept numbers :(`);
 		return;
@@ -19,10 +18,10 @@ function handleSubmit(event) {
 		method: "POST",
 		credentials: "same-origin",
 		headers: {
-			"Content-Type": "application/json",
+			"Content-Type": "text/plain",
 		},
 		// Body data type must match "Content-Type" header
-		body: JSON.stringify({ mood }),
+		body: mood,
 	};
 
 	fetch(`/test`, options)
