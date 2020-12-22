@@ -24,7 +24,7 @@ function handleSubmit(event) {
 		body: mood,
 	};
 
-	fetch(`/test`, options)
+	fetch(`http://localhost:8080/test`, options)
 		.then((res) => res.json())
 		.then(buildHTML)
 		.catch((err) => console.log(`error with client request: ${err}`));
